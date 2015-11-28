@@ -49,3 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['translate_uri_dashes'] = FALSE;
+$route['default_controller'] = 'homeController';
+$route['perusahaan'] = 'perusahaanController';
+$route['migrate'] = 'migrate';
+$route['login'] = 'authController';
+$route['logout'] = 'authController/logout';
+$route['solusi'] = 'solusiController';
+$route['solusi/(:num)'] = 'solusiController/show/$1';
+// $route['migrate'] = function(){
+//     echo APPPATH;
+// };
+$route['migrate/(:num)'] = 'migrate/index/$1';
