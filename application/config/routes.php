@@ -51,10 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$route['default_controller'] = 'Guest';
+//$route['guest'] = 'Guest';
 $route['page'] = 'Guest/page';
 $route['translate_uri_dashes'] = FALSE;
-$route['default_controller'] = 'homeController';
+$route['default_controller'] = 'Guest';
 $route['perusahaan'] = 'perusahaanController';
 $route['migrate'] = 'migrate';
 $route['login'] = 'authController';
@@ -65,3 +65,7 @@ $route['solusi/(:num)'] = 'solusiController/show/$1';
 //     echo APPPATH;
 // };
 $route['migrate/(:num)'] = 'migrate/index/$1';
+
+
+$route['page2'] = 'Guest/page2';
+$route['page3'] = 'Guest/page3';

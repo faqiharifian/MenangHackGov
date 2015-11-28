@@ -55,6 +55,29 @@ p.title_solusi{
 	padding-bottom: 5px;
 }
 
+.detail_solusi{
+	background:white;
+	box-shadow: 0px 2px 5px #888888;
+	padding-top:20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	min-height: 400px; 
+}
+.tabel_solusi{
+	background:white;
+	box-shadow: 0px 2px 5px #888888;
+	padding-top:20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	min-height: 400px; 
+}
+
 .side_menu{
 	background:white;
 	box-shadow: 0px 2px 5px #888888;
@@ -64,6 +87,7 @@ p.title_solusi{
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 5px;
+	min-height: 100px;
 }
 .jumbotron{
 	padding-top: 5px;
@@ -76,3 +100,7 @@ p.title_solusi{
 	text-align: center;
 }
 
+img.imageModal{
+	max-width:100%;
+	height: auto;
+}

@@ -13,7 +13,6 @@
 				<h1>Connect!</h1>
 			</div>
 		</div>
-		<!--END of CONTENT-UP-->
 
 		<div id="content-mid">
 			<div class="col-md-12" style="clear:both">
@@ -21,43 +20,23 @@
 			</div>
 			<div id="main_content" class="col-md-9">
 				<div class="col-md-12">
-					<div class="list_solusi">
-						<p style="font-size:16px;">Hasil untuk "kata kunci" xx records</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
+					<div class="detail_solusi">
+						<p class="title_solusi" style="font-size:20px;">Ini adalah judul untuk Satu solusi</p>
 						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
 						<p class="deskripsi_solusi">
 							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
 						</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
 						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
+							Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
 						</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
 						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
+							Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
 						</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
-						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
-						</p>
-					</div>
-					<div class="list_solusi">
-						<p>Tidak temukan solusi?<a href="#"> Click disini</a></p>
+
+						<form action="#" method="post">
+				            <button type="submit" class="btn btn-primary"name="permintaan" value="">Kirim Permintaan</button>
+				        </form>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -94,7 +73,7 @@
 				</form>
 			</div>
 		</div>
-		<!--END of CONTENT-MID-->
+
 		<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog modal-sm" role="document">
 		    <div class="modal-content">
