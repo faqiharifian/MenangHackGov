@@ -1,4 +1,4 @@
-<div id="content-mid">
+		<div id="content-mid">
 			<div class="col-md-12" style="clear:both">
 
 			</div>
@@ -47,7 +47,7 @@
 								echo '<tr>
 									<td>'.($key+1).'</td>
 									<td>'.$value->deskripsi.'</td>
-									<td><a href="#" data-imgsource="'.base_url('assets/image/bg.jpg').'" data-toggle="modal" data-target="#myModalGambar">'.($value->status <= 1 ? 'Upload Gambar' : 'Lihat Gambar').'</a></td>
+									<td><a href="#" data-imgsource="'.base_url($value->gambar).'" data-toggle="modal" '.($value->status <= 1 ? 'data-target="#myModalUpload"' : 'data-target="#myModalGambar"').' >'.($value->status <= 1 ? 'Upload Gambar' : 'Lihat Gambar').'</a></td>
 									<td>';
 								if($value->status == 0){
 									echo '<span class="label label-danger">Ditolak</span>';
@@ -66,9 +66,31 @@
 						</table>
 					</div>
 				</div>
-				<div class="col-md-12">
-
-				</div>
+				<div class="col-md-12 panel_komentar">
+					<div id="disqus_thread"></div>
+					<script>
+					    /**
+					     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+					     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+					     */
+					    /*
+					    var disqus_config = function () {
+					        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+					        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+					    };
+					    */
+					    (function() {  // DON'T EDIT BELOW THIS LINE
+					        var d = document, s = d.createElement('script');
+					        
+					        s.src = '//konekin.disqus.com/embed.js';
+					        
+					        s.setAttribute('data-timestamp', +new Date());
+					        (d.head || d.body).appendChild(s);
+					    })();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			
+				</div><!--HERE-->
 			</div>
 			<div class="col-md-3 side_menu" style="margin-top:30px;">
 				<h4>Cari apa yang Anda perlukan</h4>
