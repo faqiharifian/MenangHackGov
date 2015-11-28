@@ -8,7 +8,7 @@ class SolusiController extends CI_Controller
 		parent::__construct();
         $this->load->model('solusi');
         $this->load->model('masalah');
-
+        $this->load->model('user_masalah');
 	}
 
     public function index()
@@ -33,6 +33,7 @@ class SolusiController extends CI_Controller
             $data['solusi'] = $this->masalah->get();
         }else{
             $data['solusi'] = $this->masalah->search();
+            // var_dump($data['solusi']);die();
 
         }
         $this->load->template('list_solusi', $data);
@@ -57,6 +58,8 @@ class SolusiController extends CI_Controller
                 show_404();
             }
 
+            // $data['meminta'] = $this->user_masalah->is_requesting($id);
+
             $data['solusi'] = $this->solusi->get(array('id_masalah' => $data['masalah']->id));
 
             // var_dump($data);
@@ -65,7 +68,21 @@ class SolusiController extends CI_Controller
             // $data['masalah'] = $result['masalah'];
             // $data['solusi'] = $result['solusi'];
 
-            $this->load->template('detail_solusi', $data);
+            $params = array(
+                array('id_masalah' => $data['masalah']->id),
+                array('id_pengunjung' => $this->session->id)
+            );
+            $result2 = $this->user_masalah->get_solusi($params);
+
+            if(!empty($result2)){
+                if($result2->id_perusahaan != 0 && $result2->status == 1){
+                    $this->load->template('tabel_solusi', $data);
+                }
+            }else{
+                $this->load->template('detail_solusi', $data);
+            }
+
+
         }else {
             $this->load->model('user_masalah');
 

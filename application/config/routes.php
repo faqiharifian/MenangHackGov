@@ -64,6 +64,8 @@ $route['solusi/(:num)'] = 'solusiController/show/$1';
 $route['masalah'] = 'masalahController';
 $route['masalah/create'] = 'masalahController/create';
 $route['masalah/(:num)'] = 'masalahController/show/$1';
+$route['permintaan'] = 'permintaanController';
+$route['permintaan/(:num)/(:num)'] = 'permintaanController/show/$1/$2';
 // $route['migrate'] = function(){
 //     echo APPPATH;
 // };
