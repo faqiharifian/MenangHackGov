@@ -15,11 +15,11 @@
             </thead>
             <tbody>
             <?php
-            if(!empty($solusi)){
-                foreach ($solusi as $key => $item) {
+            if(!empty($masalah)){
+                foreach ($masalah as $key => $item) {
                     echo '<tr>
                         <td>'.($key+1).'</td>
-                        <td><a href="'.site_url('solusi/'.$item->id).'">'.$item->judul.'</a></td>
+                        <td><a href="'.site_url('masalah/'.$item->id).'">'.$item->judul.'</a></td>
                         <td>'.$item->deskripsi.'</td>
                     </tr>';
                 }
