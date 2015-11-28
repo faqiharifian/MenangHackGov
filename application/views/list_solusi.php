@@ -1,46 +1,31 @@
 		<div id="content-mid">
 			<div class="col-md-12" style="clear:both">
-
 			</div>
 			<div id="main_content" class="col-md-9">
 				<div class="col-md-12">
 					<div class="list_solusi">
 						<p style="font-size:16px;">Hasil untuk "kata kunci" xx records</p>
 					</div>
+					<?php
+						if(!empty($solusi)){
+							foreach ($solusi as $key => $item) {
+								echo '<div class="list_solusi">';
+								echo '<p class="title_solusi"><a href="'.site_url('solusi/'.$item->id).'">'.$item->judul.'</a></p>';
+								echo '<p class="perusahaan_solusi">oleh perusahaan solusi</p>';
+								echo '<p class="deskripsi_solusi">
+									'.$item->deskripsi.'
+									<a href="'.site_url('solusi/'.$item->id).'">baca selengkapnya...</a>
+								</p></div>';
+							}
+						}else{
+							echo '<div class="list_solusi">';
+							echo '<p style="font-size:16px;">Tidak Ada Hasil yang sesuai</p>';
+							echo '</div>';
+						}
+					?>
+					
 					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
-						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
-						</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
-						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
-						</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
-						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
-						</p>
-					</div>
-					<div class="list_solusi">
-						<p class="title_solusi">Ini adalah judul untuk Satu solusi</p>
-						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
-						<p class="deskripsi_solusi">
-							Ini adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusiIni adalah deskripsi solusi
-							<a href="#">baca selengkapnya...</a>
-						</p>
-					</div>
-					<div class="list_solusi">
-						<p>Tidak temukan solusi?<a href="#"> Click disini</a></p>
+						<p>Tidak temukan solusi?<a href="<?=site_url('masalah/create')?>"> Click disini</a></p>
 					</div>
 				</div>
 				<div class="col-md-12">

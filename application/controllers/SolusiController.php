@@ -35,7 +35,7 @@ class SolusiController extends CI_Controller
             $data['solusi'] = $this->masalah->search();
 
         }
-        $this->load->view('dummy/solusi', $data);
+        $this->load->template('list_solusi', $data);
     }
 
     public function show($id = FALSE){
@@ -65,7 +65,7 @@ class SolusiController extends CI_Controller
             // $data['masalah'] = $result['masalah'];
             // $data['solusi'] = $result['solusi'];
 
-            $this->load->view('dummy/solusi_detail', $data);
+            $this->load->template('detail_solusi', $data);
         }else {
             $this->load->model('user_masalah');
 

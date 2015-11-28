@@ -13,9 +13,9 @@
 						bla nla ndladnlka lakndlkah dladal lkandlkadnlakdnsadkl lkandlkandlka da nlkdandlkandk
 						Masukkan pencarian yang Anda perlukan.
 						</p>
-						<form class="form-inline col-md-12 col-sm-12" action="<?=site_url('solusi');?>" method="post">
+						<form class="form-inline col-md-12 col-sm-12" action="<?=site_url('solusi');?>" method="get">
 						  <div class="form-group" style="width:80%">
-						    <input type="text" style="width:100%" class="form-control" id="search" placeholder="Masukkan yang Anda cari" name="search">
+						    <input type="text" style="width:100%" class="form-control" id="search" name="q"placeholder="Masukkan yang Anda cari" name="search">
 						  </div>
 						  <button type="submit" class="btn btn-primary">Cari!</button>
 						</form>
