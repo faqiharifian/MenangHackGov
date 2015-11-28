@@ -5,10 +5,10 @@
 			<div id="main_content" class="col-md-9">
 				<div class="col-md-12">
 					<div class="tabel_solusi">
-						<p class="title_solusi" style="font-size:20px;">Ini adalah judul untuk Satu solusi</p>
+						<p class="title_solusi" style="font-size:20px;"><?=$masalah->judul?></p>
 						<p class="perusahaan_solusi">oleh perusahaan solusi</p>
 						<p class="deskripsi_solusi">
-							Tahapan-tahapan yang harus dipenuhi untuk "Ini adalah judul untuk satu solusi" adalah sebagai berikut 
+							<?=$masalah->deskripsi?>
 						</p>
 						<table class="table table-hover table-bordered">
 						<thead>
@@ -18,7 +18,7 @@
 							<th>Status</th>
 						</thead>
 						<tbody>
-							<tr>
+							<!-- <tr>
 								<td>1</td>
 								<td>Membuat surat pernyataan RT dan RW</td>
 								<td><a href="#" data-imgsource="<?php echo base_url('assets/image/bg.jpg');?>" data-toggle="modal" data-target="#myModalGambar">Lihat Gambar</a></td>
@@ -41,7 +41,27 @@
 								<td>Membuat surat pernyataan Walikota</td>
 								<td><a href="#" data-toggle="modal" data-target="#myModalUpload">Upload Gambar</a></td>
 								<td><span class="label label-warning">Belum upload</span></td>
-							</tr>
+							</tr> -->
+							<?php
+							foreach ($solusi as $key => $value) {
+								echo '<tr>
+									<td>'.($key+1).'</td>
+									<td>'.$value->deskripsi.'</td>
+									<td><a href="#" data-imgsource="'.base_url('assets/image/bg.jpg').'" data-toggle="modal" data-target="#myModalGambar">'.($value->status <= 1 ? 'Upload Gambar' : 'Lihat Gambar').'</a></td>
+									<td>';
+								if($value->status == 0){
+									echo '<span class="label label-danger">Ditolak</span>';
+								}else if($value->status == 1){
+									echo '<span class="label label-warning">Belum upload</span>';
+								}else if($value->status == 2){
+									echo '<span class="label label-info">Dalam proses</span>';
+								}else{
+									echo '<span class="label label-success">Diterima</span>';
+								}
+								echo '</td>
+								</tr>';
+							}
+							?>
 						</tbody>
 						</table>
 					</div>
@@ -73,10 +93,10 @@
 				  		<a href="#" data-toggle="modal" data-target="#myModal">Daftar Baru</a></p>
 
 				  	</div>
-				  	
+
 				    <button type="submit" class="btn btn-primary pull-right col-md-4">Login</button>
 				  </div>
-				  
+
 				</form>
 			</div>
 		</div>
@@ -124,7 +144,7 @@
 			  $('#myInput').focus()
 			})
 
-			
+
 			$('#myModalGambar').on('show.bs.modal', function(e) {
 				var img = $(e.relatedTarget).data('imgsource');
 			    //alert(img);
@@ -132,7 +152,7 @@
 
 			    $(this).find('.modal-body').css({
 	              width:'auto', //probably not needed
-	              height:'auto', //probably not needed 
+	              height:'auto', //probably not needed
 	              'max-height':'100%'
 	      		 });
 			});
@@ -140,5 +160,5 @@
 			$('#myModalUpload').on('shown.bs.modal', function () {
 			  $('#myInput').focus()
 			})
-			
+
 		</script>

@@ -8,6 +8,7 @@ class MasalahController extends CI_Controller
 		parent::__construct();
         $this->load->model('masalah');
         $this->load->model('user_masalah');
+        $this->load->model('solusi');
 	}
 
     public function index()
@@ -69,10 +70,9 @@ class MasalahController extends CI_Controller
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('permintaan', 'Permintaan', 'required');
+        $this->form_validation->set_rules('proposal', 'Proposal', 'required');
 
         if($this->form_validation->run() === FALSE){
-            $this->load->model('masalah');
             $data['masalah'] = $this->masalah->get(array('id' => $id));
 
             if (empty($data['masalah'])){
@@ -87,7 +87,7 @@ class MasalahController extends CI_Controller
             // $data['masalah'] = $result['masalah'];
             // $data['solusi'] = $result['solusi'];
 
-            $this->load->view('dummy/solusi_detail', $data);
+            $this->load->view('dummy/masalah_detail', $data);
         }else {
             $this->load->model('user_masalah');
 
@@ -98,10 +98,10 @@ class MasalahController extends CI_Controller
             }
             //var_dump($result);die();
 
-            $this->user_masalah->set_permintaan($result, $id);
+            $this->user_masalah->set_proposal($result, $id);
 
             $this->session->set_flashdata('success', 'Permintaan berhasil dikirim');
-            redirect('solusi/'.$result->id_masalah);
+            redirect('masalah/'.$result->id_masalah);
         }
 
 

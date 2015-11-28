@@ -65,7 +65,7 @@ class Masalah extends CI_Model {
         $this->db->from('masalah');
         $this->db->join('user_masalah', 'masalah.id = user_masalah.id_masalah');
         // $this->db->where('id_pengunjung =', 0);
-        $this->db->group_start();
+        // $this->db->group_start();
         $search = explode(" ", $this->input->get('q'));
         foreach ($search as $key => $value) {
             $this->db->or_like('judul', $value);
@@ -73,8 +73,10 @@ class Masalah extends CI_Model {
         foreach ($search as $key => $value) {
             $this->db->or_like('deskripsi', $value);
         }
-        $this->db->group_end();
+        // $this->db->group_end();
         $this->db->where(array('id_perusahaan' => '0'));
+        // var_dump($this->db->get_compiled_select());die();
+        $this->db->group_by('id_masalah');
         $query = $this->db->get();
 
         //var_dump($query->result()); die();

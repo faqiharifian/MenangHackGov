@@ -79,6 +79,55 @@ class User_Masalah extends CI_Model {
         return $result;
     }
 
+    public function get_permintaan(){
+        $this->db->select('*');
+        $this->db->from('user_masalah');
+        $this->db->where(array('id_perusahaan' => $this->session->id));
+        $this->db->where('id_pengunjung !=', 0);
+        $this->db->where(array('status' => 0));
+        $this->db->join('masalah', 'masalah.id = user_masalah.id_masalah');
+        $query = $this->db->get();
+        $result = $query->result();
+        // var_dump($result);die();
+
+        return $result;
+    }
+
+    public function terima_permintaan($id_masalah, $id_pengunjung){
+        $this->db->where(array('id_masalah' => $id_masalah));
+        $this->db->where(array('id_pengunjung' => $id_pengunjung));
+        $this->db->where(array('id_perusahaan' => $this->session->id));
+        $result = $this->db->update('user_masalah', array('status' => 1));
+        return $result;
+    }
+
+    public function get_solusi($where){
+        foreach ($where as $key => $value) {
+            $this->db->where($value);
+        }
+        $query = $this->db->get('user_masalah');
+        // var_dump($query->result());die();
+        return $query->row();
+    }
+
+    public function set_proposal($result, $id){
+        $result = $this->get(array('id_masalah' => $result->id));
+        // $result = $result->row();
+        // var_dump($result);die();
+
+        $data = array(
+            'id_masalah' => $result->id_masalah,
+            'id_perusahaan' => $id,
+            'id_pengunjung' => $result->id_pengunjung,
+
+        );
+        do{
+            $result = $this->db->insert('user_masalah', $data);
+        }while(!$result);
+
+        return $result;
+    }
+
     public function create($id_masalah){
         $data = array(
             'id_masalah' => $id_masalah,
@@ -120,116 +169,10 @@ class User_Masalah extends CI_Model {
         return $result;
     }
 
-    public function create_rules(){
-    return array(
-        array(
-            'field' => 'email',
-            'label' => 'Email',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'required',
-                'is_unique[solusi.email]',
-                'valid_email',
-                'max_length[250]'
-            ),
-        ),
-        array(
-            'field' => 'name',
-            'label' => 'Name',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'required',
-                'max_length[250]'
-            ),
-        ),
-        array(
-            'field' => 'employ',
-            'label' => 'Employ',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'required',
-                'max_length[250]'
-            ),
-        ),
-        array(
-            'field' => 'level',
-            'label' => 'Level',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'required',
-                'integer',
-                'greater_than_equal_to[0]',
-                'less_than_equal_to[1]'
-            ),
-        ),
-        array(
-            'field' => 'about',
-            'label' => 'About',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'max_length[120]'
-            ),
-        ),
-        array(
-            'field' => 'facebook',
-            'label' => 'Facebook',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'max_length[250]',
-
-            ),
-        ),
-        array(
-            'field' => 'twitter',
-            'label' => 'Twitter',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'max_length[250]',
-            ),
-        ),
-        array(
-            'field' => 'google',
-            'label' => 'Google',
-            'rules' => array(
-                'trim',
-                'htmlspecialchars',
-                'max_length[250]',
-            ),
-            ),
-        );
-    }
-
-    public function password_rules(){
-        return array(
-            array(
-                'field' => 'old_password',
-                'label' => 'Old Password',
-                'rules' => array(
-                    'required',
-                ),
-            ),
-            array(
-                'field' => 'password',
-                'label' => 'Password',
-                'rules' => array(
-                    'required',
-                    'min_length[8]',
-                ),
-            ),
-            array(
-                'field' => 'password_confirmation',
-                'label' => 'Password Confirmation',
-                'rules' => array(
-                    'matches[password]'
-                ),
-            ),
-        );
+    public function is_requesting($id_masalah){
+        $this->db->where(array('id_masalah' => $id_masalah));
+        $this->db->where(array('id_pengunjung' => $this->session->id));
+        $query = $this->db->get('user_masalah');
+        var_dump($query->result());die();
     }
 }
