@@ -36,24 +36,31 @@
 				  	<button type="submit" class="btn btn-primary col-md-2">Cari!</button>
 				</form>
 			</div>
-			<div class="col-md-3 side_menu">
-				<h4>Anda belum login</h4>
-				<form>
-				  <div class="form-group">
-				    <input type="text" class="form-control" id="username" placeholder="Username">
-				  </div>
-				  <div class="form-group">
-				    <input type="password" class="form-control" id="password" placeholder="Password">
-				  </div>
-				  <div class="form-group">
-				  	<div class="col-md-8">
-				  		<a href="#" data-toggle="modal" data-target="#myModal">Daftar Baru</a></p>
+			<?php
+				if(!$this->session->userdata('logged_in')){
+					echo '
+					<div class="col-md-3 side_menu">
+						<h4>Anda belum login</h4>
+						<form action="'.site_url('login').'" method="post">
+						  <div class="form-group">
+						    <input type="text" class="form-control" id="username" placeholder="Username">
+						  </div>
+						  <div class="form-group">
+						    <input type="password" class="form-control" id="password" placeholder="Password">
+						  </div>
+						  <div class="form-group">
+						  	<div class="col-md-8">
+						  		<a href="#" data-toggle="modal" data-target="#myModal">Daftar Baru</a></p>
 
-				  	</div>
-				  	
-				    <button type="submit" class="btn btn-primary pull-right col-md-4">Login</button>
-				  </div>
-				  
-				</form>
-			</div>
+						  	</div>
+						  	
+						    <button type="submit" class="btn btn-primary pull-right col-md-4">Login</button>
+						  </div>
+						  
+						</form>
+					</div>
+					';
+				}
+
+			?>
 		</div>

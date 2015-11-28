@@ -23,7 +23,7 @@ class AuthController extends CI_Controller
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		if($this->form_validation->run() === FALSE){
-			$this->load->view('dummy/login', $data);
+			$this->load->template('login', $data);
 		}else{
 			$username = htmlspecialchars($this->input->post('username'));
 	        $result = $this->user->get(array('username' => $username));
@@ -41,14 +41,12 @@ class AuthController extends CI_Controller
 
 					$this->session->set_userdata($data);
 					redirect('');
-	            }else if($result->active == 0){
-					$this->session->set_flashdata('error', "Please follow link in your email to activate this account.");
 	            }
 	        }else{
-
+	        	//disini kosong
 	        }
 			$this->session->set_flashdata('error', "Username or Password incorrect");
-			$this->load->view('dummy/login', $data);
+			redirect('login');
 		}
 
 	}

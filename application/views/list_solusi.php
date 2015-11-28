@@ -34,32 +34,39 @@
 			</div>
 			<div class="col-md-3 side_menu" style="margin-top:30px;">
 				<h4>Cari apa yang Anda perlukan</h4>
-				<form class="form-inline col-md-12 col-sm-12" action="#" method="post">
+				<form class="form-inline col-md-12 col-sm-12" action="<?php echo site_url('solusi');?>" method="get">
 					<div class="form-group col-md-10">
-						<input type="text" class="form-control" style="width:100%"id="search" placeholder="Masukkan yang Anda cari" name="search">
+						<input type="text" class="form-control" style="width:100%"id="search" placeholder="Masukkan yang Anda cari" name="q">
 				  	</div>
 				  	<button type="submit" class="btn btn-primary col-md-2">Cari!</button>
 				</form>
 			</div>
-			<div class="col-md-3 side_menu">
-				<h4>Anda belum login</h4>
-				<form>
-				  <div class="form-group">
-				    <input type="text" class="form-control" id="username" placeholder="Username">
-				  </div>
-				  <div class="form-group">
-				    <input type="password" class="form-control" id="password" placeholder="Password">
-				  </div>
-				  <div class="form-group">
-				  	<div class="col-md-8">
-				  		<a href="#" data-toggle="modal" data-target="#myModal">Daftar Baru</a></p>
+			<?php
+				if(!$this->session->userdata('logged_in')){
+					echo '
+					<div class="col-md-3 side_menu">
+						<h4>Anda belum login</h4>
+						<form action="'.site_url('login').'" method="post">
+						  <div class="form-group">
+						    <input type="text" class="form-control" id="username" placeholder="Username">
+						  </div>
+						  <div class="form-group">
+						    <input type="password" class="form-control" id="password" placeholder="Password">
+						  </div>
+						  <div class="form-group">
+						  	<div class="col-md-8">
+						  		<a href="#" data-toggle="modal" data-target="#myModal">Daftar Baru</a></p>
 
-				  	</div>
-				  	
-				    <button type="submit" class="btn btn-primary pull-right col-md-4">Login</button>
-				  </div>
-				  
-				</form>
-			</div>
+						  	</div>
+						  	
+						    <button type="submit" class="btn btn-primary pull-right col-md-4">Login</button>
+						  </div>
+						  
+						</form>
+					</div>
+					';
+				}
+
+			?>
 		</div>
 		<!--END of CONTENT-MID-->
