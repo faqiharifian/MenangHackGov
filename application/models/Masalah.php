@@ -26,11 +26,46 @@ class Masalah extends CI_Model {
         return $query->row();
     }
 
+    public function get_unsolved($where = FALSE){
+        $query = $this->db->get_where('user_masalah', array('id_perusahaan' => 0));
+        $results = $query->result();
+        // var_dump($results);die();
+        // $query = $this->db->get_where('masalah', array('id' => $results[0]->id_masalah));
+        // var_dump($query->result());die();
+
+        $this->db->select('*');
+        $this->db->from('masalah');
+
+        // $this->db->group_start();
+        foreach ($results as $key => $value) {
+            $this->db->or_where(array('id' => $value->id_masalah));
+        }
+        // $this->db->group_end();
+
+        // $this->db->where(array('id_perusahaan' => '0'));
+        if ($where === FALSE){
+            // do{
+                // var_dump($this->db->get_compiled_select());die();
+                $query = $this->db->get();
+
+            // }while(!$query);
+            //var_dump($query->result());die();
+            return $query->result();
+        }
+
+        do{
+            $this->db->where($where);
+            $query = $this->db->get();
+        }while(!$query);
+        return $query->result();
+    }
+
     public function search(){
         $this->db->select('*');
         $this->db->from('masalah');
-        // $this->db->join('masalah', 'masalah.id = solusi.id_masalah');
-
+        $this->db->join('user_masalah', 'masalah.id = user_masalah.id_masalah');
+        // $this->db->where('id_pengunjung =', 0);
+        $this->db->group_start();
         $search = explode(" ", $this->input->get('q'));
         foreach ($search as $key => $value) {
             $this->db->or_like('judul', $value);
@@ -38,7 +73,11 @@ class Masalah extends CI_Model {
         foreach ($search as $key => $value) {
             $this->db->or_like('deskripsi', $value);
         }
+        $this->db->group_end();
+        $this->db->where(array('id_perusahaan' => '0'));
         $query = $this->db->get();
+
+        //var_dump($query->result()); die();
 
         // $result['masalah'] = $query->result();
         //
@@ -54,15 +93,12 @@ class Masalah extends CI_Model {
 
     public function create($password){
         $data = array(
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'employ' => $this->input->post('employ'),
-            'level' => $this->input->post('level'),
-            'password' => password_hash($password, PASSWORD_BCRYPT)
+            'judul' => $this->input->post('judul'),
+            'deskripsi' => $this->input->post('deskripsi'),
         );
 
         do{
-            $result = $this->db->insert('users', $data);
+            $result = $this->db->insert('masalah', $data);
         }while(!$result);
 
         return $this->db->insert_id();

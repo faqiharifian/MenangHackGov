@@ -8,9 +8,7 @@ class SolusiController extends CI_Controller
 		parent::__construct();
         $this->load->model('solusi');
         $this->load->model('masalah');
-        if(!$this->session->logged_in){
-			redirect('login');
-		}
+
 	}
 
     public function index()
@@ -31,13 +29,13 @@ class SolusiController extends CI_Controller
 
         if($this->input->get('q') == null){
             //die();
-            redirect(site_url());
+            //redirect(site_url());
+            $data['solusi'] = $this->masalah->get();
         }else{
             $data['solusi'] = $this->masalah->search();
-            $this->load->view('dummy/solusi', $data);
+
         }
-
-
+        $this->load->view('dummy/solusi', $data);
     }
 
     public function show($id = FALSE){
@@ -71,15 +69,16 @@ class SolusiController extends CI_Controller
         }else {
             $this->load->model('user_masalah');
 
-            $result = $this->masalah->get($id);
+            $result = $this->masalah->get(array('id' => $id));
 
             if(empty($result)){
                 show_404();
             }
+            //var_dump($result);die();
 
             $this->user_masalah->set_permintaan($result, $id);
 
-            $this->session->set_flashdata('Permintaan berhasil dikirim');
+            $this->session->set_flashdata('success', 'Permintaan berhasil dikirim');
             redirect('solusi/'.$result->id_masalah);
         }
 

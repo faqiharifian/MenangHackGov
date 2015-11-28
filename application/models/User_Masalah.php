@@ -19,7 +19,19 @@ class User_Masalah extends CI_Model {
         }
 
         do{
-            $query = $this->db->get_where('solusi', $where);
+            $query = $this->db->get_where('user_masalah', $where);
+        }while(!$query);
+
+        return $query->row();
+    }
+
+    public function get_where($where = FALSE){
+        if ($where === FALSE){
+            show_404();
+        }
+
+        do{
+            $query = $this->db->get_where('user_masalah', $where);
         }while(!$query);
 
         return $query->result();
@@ -52,6 +64,8 @@ class User_Masalah extends CI_Model {
     }
 
     public function set_permintaan($result, $id){
+        $result = $this->get(array('id_masalah' => $result->id));
+
         $data = array(
             'id_masalah' => $result->id_masalah,
             'id_perusahaan' => $result->id_perusahaan,
@@ -65,17 +79,14 @@ class User_Masalah extends CI_Model {
         return $result;
     }
 
-    public function create($password){
+    public function create($id_masalah){
         $data = array(
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'employ' => $this->input->post('employ'),
-            'level' => $this->input->post('level'),
-            'password' => password_hash($password, PASSWORD_BCRYPT)
+            'id_masalah' => $id_masalah,
+            'id_pengunjung' => $this->session->id,
         );
 
         do{
-            $result = $this->db->insert('solusi', $data);
+            $result = $this->db->insert('user_masalah', $data);
         }while(!$result);
 
         return $this->db->insert_id();
