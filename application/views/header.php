@@ -10,6 +10,6 @@
 	<body class="body">
 		<div id="content-up">
 			<div id="header">
-				<h1>Connect!</h1>
+				<h1>Konek-in</h1>
 			</div>
 		</div>

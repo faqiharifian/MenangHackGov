@@ -9,9 +9,8 @@
 				<div id="form" class="col-md-12" style="padding-top:100px;">
 					<div class="jumbotron">
 					  <h2 style="text-align:center;">Selamat Datang!</h2>
-					  	<p>Connect! adalah aplikasi bagi Anda untuk menemukan solusi dari masalah yang Anda miliki.
-						bla nla ndladnlka lakndlkah dladal lkandlkadnlakdnsadkl lkandlkandlka da nlkdandlkandk
-						Masukkan pencarian yang Anda perlukan.
+					  	<p>Konek-in adalah aplikasi yang menghubungkan Masyarakat dengan Perusahaaan dan Pemerintah
+					  	dalam mengatasi pembangunan infrastruktur. Masukkan apa yang Anda cari.
 						</p>
 						<form class="form-inline col-md-12 col-sm-12" action="<?=site_url('solusi');?>" method="get">
 						  <div class="form-group" style="width:80%">
